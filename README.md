@@ -2,8 +2,8 @@
 
 **=== Script all in one =========**
 
-** Usage:	$0 <SCRIPT> ARGUMENTS
-** Scripts:
+** Usage:	$0 <SCRIPT> ARGUMENTS**
+** Scripts:**
 
 * s1 - Current video driver
 * s2 - View progress at dd
