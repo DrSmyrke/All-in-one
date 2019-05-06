@@ -84,8 +84,13 @@ case $1 in
 	echo "s37 - rsync directory <SSH PORT|22> <SYNC DIR> <remore user> <remote server> <remote dir> <[y] from show notify-send message>"
 	echo "s38 - Create ext4 file <FILENAME> <SIZE Megabytes>"
 	echo "s39 - Make DEB package <DIR> <packet-name> <all|i386|amd64>"
-	echo "s40 - "
-	echo "s41 - "
+	echo "s40 - Mount WebDAV <URL> (https only) <MOUNT DIR>"
+	echo "s41 - Mount SSHFS <USERNAME> <SSH SERVER> <REMOTE PATH> <LOCAL PATH>"
+	echo "s42 - "
+	echo "s43 - "
+	echo "s44 - "
+	echo "s45 - "
+	echo "s46 - "
 	;;
 	"s1")	grep -Eiwo -m1 'nvidia|amd|ati|intel' /var/log/Xorg.0.log	;;
 	"s2")	watch -n 5 sudo killall -USR1 dd	;;
@@ -280,10 +285,20 @@ case $1 in
 		fi
 	;;
 	"s40")
+		mount -t davfs $2 $3 -o uid=$UID,gid=$GID,rw
 	;;
 	"s41")
+		sshfs $2@$3:$4 $5 -o uid=$UID,gid=$GID,reconnect
 	;;
 	"s42")
+	;;
+	"s43")
+	;;
+	"s44")
+	;;
+	"s45")
+	;;
+	"s46")
 	;;
 esac
 

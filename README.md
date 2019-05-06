@@ -44,3 +44,5 @@
 * s37 - rsync directory <SSH PORT|22> <SYNC DIR> <remore user> <remote server> <remote dir> <[y] from show notify-send message>
 * s38 - Create ext4 file <FILENAME> <SIZE Megabytes>
 * s39 - Make DEB package <DIR> <packet-name> <all|i386|amd64>
+* s40 - Mount WebDAV <URL> (https only) <MOUNT DIR>
+* s41 - Mount SSHFS <USERNAME> <SSH SERVER> <REMOTE PATH> <LOCAL PATH>
