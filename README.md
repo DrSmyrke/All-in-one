@@ -3,6 +3,7 @@
 **=== Script all in one =========**
 
 ** Usage:	$0 <SCRIPT> ARGUMENTS**
+
 ** Scripts:**
 
 * s1 - Current video driver
@@ -46,3 +47,4 @@
 * s39 - Make DEB package <DIR> <packet-name> <all|i386|amd64>
 * s40 - Mount WebDAV <URL> (https only) <MOUNT DIR>
 * s41 - Mount SSHFS <USERNAME> <SSH SERVER> <REMOTE PATH> <LOCAL PATH>
+* s42 - Get random file <DIR>

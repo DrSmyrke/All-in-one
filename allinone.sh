@@ -86,7 +86,7 @@ case $1 in
 	echo "s39 - Make DEB package <DIR> <packet-name> <all|i386|amd64>"
 	echo "s40 - Mount WebDAV <URL> (https only) <MOUNT DIR>"
 	echo "s41 - Mount SSHFS <USERNAME> <SSH SERVER> <REMOTE PATH> <LOCAL PATH>"
-	echo "s42 - "
+	echo "s42 - Get random file <DIR>"
 	echo "s43 - "
 	echo "s44 - "
 	echo "s45 - "
@@ -291,6 +291,8 @@ case $1 in
 		sshfs $2@$3:$4 $5 -o uid=$UID,gid=$GID,reconnect
 	;;
 	"s42")
+		FILE=$(find $2 -type f | shuf -n 1);
+		echo $FILE
 	;;
 	"s43")
 	;;
