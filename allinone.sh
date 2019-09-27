@@ -75,7 +75,7 @@ case $1 in
 	echo "s28 - Generate SSH RSA key in current folder"
 	echo "s29 - Create 10Gb in ZIP File"
 	echo "s30 - Endless launch of the team <COMMAND>"
-	echo "s31 - SSH tunnel <LOCAL PORT> <REMOTE SERVER> <REMOTE PORT> <SSH SERVER CONNECT LINE>"
+	echo "s31 - "
 	echo "s32 - List all HDD & UUID"
 	echo "s33 - Change bitVal for ~/.vine <32|64>"
     echo "s34 - Network activity"
@@ -87,10 +87,14 @@ case $1 in
 	echo "s40 - Mount WebDAV <URL> (https only) <MOUNT DIR>"
 	echo "s41 - Mount SSHFS <USERNAME> <SSH SERVER> <REMOTE PATH> <LOCAL PATH>"
 	echo "s42 - Get random file <DIR>"
-	echo "s43 - "
-	echo "s44 - "
-	echo "s45 - "
+	echo "s43 - Modify Script Bin for Cubieboard2"
+	echo "s44 - Generator NMEA"
+	echo "s45 - SSH PROXY4 <LOCAL_PORT> <SSH SERVER CONNECT LINE>"
 	echo "s46 - "
+	echo "s47 - "
+	echo "s48 - "
+	echo "s49 - "
+	echo "s50 - "
 	;;
 	"s1")	grep -Eiwo -m1 'nvidia|amd|ati|intel' /var/log/Xorg.0.log	;;
 	"s2")	watch -n 5 sudo killall -USR1 dd	;;
@@ -230,7 +234,9 @@ case $1 in
 	"s28")	ssh-keygen -t rsa -b 4096 -f ./ssh-new_key-rsa	;;
 	"s29")	dd if=/dev/zero bs=1M count=10240 | gzip > 10G.gzip	;;
 	"s30")	while [ 1 ]; do $2; sleep 3; done;	;;
-	"s31")	ssh -L 127.0.0.1:$1:$2:$3 $4	;;
+	"s31")
+		
+	;;
 	"s32")
 		ls -l /dev/disk/by-uuid
 		sudo blkid
@@ -295,12 +301,42 @@ case $1 in
 		echo $FILE
 	;;
 	"s43")
+		mount /dev/nanda /mnt
+		cd  /mnt
+		bin2fex script.bin script.fex
+		vim script.fex
+		fex2bin script.fex script.bin
+		cd /
+		umount /mnt
+		reboot
 	;;
 	"s44")
+		while true; do
+			SUM=0
+			str=\$GPGGA,$(printf "%02d" $[$(date +%H)-3])$(date +%M%S.%N),,N,,E,1,08,0.9,0.0,M,0.0,M,0.0,,
+			for (( ix=1; ix<$(expr length $str); ix++)) ;do SUM=$[SUM ^ $(printf '%d' "'${str:$ix:1}'")]; done
+			echo -e "${str}$(printf "%02x" $SUM|sed 's/./\U&/')\n"
+			sleep 0.5
+			str=\$GPGSV,1,1,12,02,86,172,,09,62,237,,22,39,109,,27,37,301,,
+			for (( ix=1; ix<$(expr length $str); ix++)) ;do SUM=$[SUM ^ $(printf '%d' "'${str:$ix:1}'")]; done
+			echo -e "${str}$(printf "%02x" $SUM|sed 's/./\U&/')\n"
+			sleep 0.5
+			str=\$GPRMC,$(printf "%02d" $[$(date +%H)-3])$(date +%M%S.%N),A,,N,,E,0.0,0.0,$(date +%d%m%y),0.0,E,
+			for (( ix=1; ix<$(expr length $str); ix++)) ;do SUM=$[SUM ^ $(printf '%d' "'${str:$ix:1}'")]; done
+			echo -e "${str}$(printf "%02x" $SUM|sed 's/./\U&/')\n"
+			sleep 0.5
+		done
 	;;
-	"s45")
-	;;
+	"s45") ssh -D $2 $3 ;;
 	"s46")
+	;;
+	"s47")
+	;;
+	"s48")
+	;;
+	"s49")
+	;;
+	"s50")
 	;;
 esac
 
