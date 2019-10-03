@@ -36,7 +36,7 @@
 * s28 - Generate SSH RSA key in current folder
 * s29 - Create 10Gb in ZIP File
 * s30 - Endless launch of the team <COMMAND>
-* s31 - SSH tunnel <LOCAL PORT> <REMOTE SERVER> <REMOTE PORT> <SSH SERVER CONNECT LINE>
+* s31 - 
 * s32 - List all HDD & UUID
 * s33 - Change bitVal for ~/.vine <32|64>
 * s34 - Network activity
@@ -48,3 +48,6 @@
 * s40 - Mount WebDAV <URL> (https only) <MOUNT DIR>
 * s41 - Mount SSHFS <USERNAME> <SSH SERVER> <REMOTE PATH> <LOCAL PATH>
 * s42 - Get random file <DIR>
+* s43 - Modify Script Bin for Cubieboard2
+* s44 - Generator NMEA
+* s45 - SSH PROXY4 <LOCAL_PORT> <SSH SERVER CONNECT LINE>
